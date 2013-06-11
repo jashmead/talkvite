@@ -6,6 +6,12 @@ ruby '2.0.0'
 gem 'rails', '4.0.0.rc1'
 group :development do
   gem 'sqlite3'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 # Use posgresql as the database for Active Record
@@ -49,3 +55,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :production do
+  gem 'pg'
+  gem 'postgres-pr'
+end
