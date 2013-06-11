@@ -9,5 +9,4 @@ Using:
   ruby 2.0
   rails 4.0
   postgresql 9.2
-
-
+  git 1.8.2.3
