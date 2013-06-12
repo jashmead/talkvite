@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Static pages" do
+  
+  let(:base_title) { "TalkVite" }
 
   describe "Home page" do
 
@@ -9,9 +11,9 @@ describe "Static pages" do
       expect(page).to have_content('TalkVite')
     end
 
-    it "should have the title 'Home'" do
+    it "should have the title 'TalkVite'" do
       visit '/static_pages/home'
-      expect(page).to have_title("TalkVite | Home")
+      expect(page).to have_title("TalkVite")
     end
   end
 
@@ -40,4 +42,18 @@ describe "Static pages" do
       expect(page).to have_title("TalkVite | About")
     end
   end
+
+ describe "Contact page" do
+
+    it "should have the content 'Contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_content('Contact')
+    end
+
+    it "should have the title 'Contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_title("#{base_title} | Contact")
+    end
+  end
+
 end
