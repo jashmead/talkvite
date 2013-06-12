@@ -17,7 +17,7 @@ end
 
 # Use posgresql as the database for Active Record
 gem 'pg'
-# gem 'postgres-pr'
+gem 'postgres-pr'     # get access to postgres-specific types
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'

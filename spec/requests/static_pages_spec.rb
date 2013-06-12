@@ -11,9 +11,9 @@ describe "Static pages" do
       expect(page).to have_content('TalkVite')
     end
 
-    it "should have the title 'Home'" do
+    it "should have the title 'TalkVite'" do
       visit '/static_pages/home'
-      expect(page).to have_title("TalkVite | Home")
+      expect(page).to have_title("TalkVite")
     end
   end
 
