@@ -6,6 +6,9 @@ ruby '2.0.0'
 gem 'rails', '4.0.0.rc1'
 gem 'bootstrap-sass'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby'
+
 group :development do
   gem 'sqlite3'
   gem 'rspec-rails'
@@ -46,8 +49,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
