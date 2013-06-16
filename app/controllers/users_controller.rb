@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # Handle a successful save.
+      flash[:success] = "Welcome to TalkVite!"
+      redirect_to @user # don't need the user_url!
     else
       render 'new'
     end
