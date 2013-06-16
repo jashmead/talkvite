@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd $TALKVITE_DIR
+bundle exec rake db:migrate
