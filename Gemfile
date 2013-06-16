@@ -17,6 +17,7 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
 end
 
 # Use posgresql as the database for Active Record
