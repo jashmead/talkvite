@@ -20,7 +20,6 @@ Talkvite::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  # set back to true for heroku; doesn't seem to have taken effect on heroku
   config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
@@ -28,7 +27,7 @@ Talkvite::Application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -60,8 +59,7 @@ Talkvite::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w(custom.css hover.css users.css works.css styleie9.css)
-  config.assets.precompile += %w( search.js )
+  # config.assets.precompile += %w( search.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
