@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create([{name: 'John Ashmead', email: 'john.ashmead@talkvite.com', password: 'E@gl3t6', password_confirmation: 'E@gl3t6'}]);
+User.create([{name: 'J. Random User', email: 'jrandom@talkvite.com', password: 'foobar', password_confirmation: 'foobar'}]);
