@@ -11,12 +11,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      sign_in @user
 	  # save message for use in next screen
       flash[:success] = "Welcome to TalkVite!"
 	  # how does this redirect_to work?
       redirect_to @user # don't need the user_url!
     else
-	  # error message from flash, will have been setup by 'save' method
+	  # we should see an error message from flash, to have been setup by 'save' method
       render 'new'
     end
   end
