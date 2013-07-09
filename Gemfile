@@ -7,7 +7,8 @@ gem 'rails', '4.0.0.rc1'
 gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
+# latest version of bcrypt-ruby, 3.1.0, does not work
+gem 'bcrypt-ruby', '3.0.1'
 
 group :development do
   gem 'sqlite3'
