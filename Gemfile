@@ -65,3 +65,6 @@ group :production do
   gem 'pg'
   gem 'postgres-pr'
 end
+
+# heroku integration gem
+gem 'rails_12factor'
