@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails'
 gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
@@ -59,12 +59,13 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 
 group :production do
   gem 'pg'
   gem 'postgres-pr'
 end
 
-# heroku integration gem
-gem 'rails_12factor'
+# heroku integration gem, fatal to "rails server" in development & test
+# see https://devcenter.heroku.com/articles/rails4-getting-started for instructions
+gem 'rails_12factor', group: [:production]
