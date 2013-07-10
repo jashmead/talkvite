@@ -19,5 +19,9 @@ module Talkvite
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    # make sure that asset pipeline is on -- DDT, in principle unnecessary
+    config.assets.enabled = true
+    # required by heroku per http://guides.rubyonrails.org/asset_pipeline.html#precompiling-assets
+    config.assets.initialize_on_precompile false
   end
 end

@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
-gem 'bootstrap-sass'
+# having problems with rails/bootstrap, so forcing versions to match tutorial
+gem 'rails', '4.0.0'
+gem 'bootstrap-sass', '2.3.2.0'
 
 # Use ActiveModel has_secure_password
 # latest version of bcrypt-ruby, 3.1.0, does not work
@@ -23,7 +24,7 @@ end
 
 # Use posgresql as the database for Active Record
 gem 'pg'
-gem 'postgres-pr'     # get access to postgres-specific types
+# gem 'postgres-pr'     # get access to postgres-specific types
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
