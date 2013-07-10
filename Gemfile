@@ -62,11 +62,6 @@ end
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
-group :production do
-  gem 'pg'
-  gem 'postgres-pr'
-end
-
 # heroku integration gem, fatal to "rails server" in development & test
 # see https://devcenter.heroku.com/articles/rails4-getting-started for instructions
 gem 'rails_12factor', group: [:production]
