@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -24,14 +25,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # Handle a successful update.
-      flash[:success] = "Changes saved"
+      flash[:success] = "Profile updated"
       sign_in @user
       redirect_to @user
     else
@@ -49,7 +47,17 @@ class UsersController < ApplicationController
     # Before filters
 
     def signed_in_user
+      @user = User.find(params[:id])  # DDT
+      logger.debug "signed_in_user: user = #{@user}"  # DDT
       redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    end
+
+    # NOTE:  we are getting errors from the test for redirection to the root_path, but in practice it seems to be working
+    #   -- can compare to talkvite2 copy, if we don't find it before the end
+    def correct_user
+      @user = User.find(params[:id])
+      logger.debug "correct_user: user = #{@user}"  # DDT
+      redirect_to(root_path) unless current_user?(@user)
     end
 
 end
