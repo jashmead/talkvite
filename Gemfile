@@ -11,6 +11,8 @@ gem 'bootstrap-sass', '2.3.2.0'
 # latest version of bcrypt-ruby, 3.1.0, does not work
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'sqlite3'

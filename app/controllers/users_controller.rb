@@ -1,9 +1,12 @@
+# known bugs:
+# 1. test for not being able to edit a different user reroutes to signin, not root
+# 2. we can see the 'show' page for a different user:  if logged in as '1', can see /users/2 -- is this a bug?
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show
