@@ -47,9 +47,13 @@ class UsersController < ApplicationController
     # Before filters
 
     def signed_in_user
-      @user = User.find(params[:id])  # DDT
-      logger.debug "signed_in_user: user = #{@user}" # DDT
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+      unless signed_in?
+        # @user = User.find(params[:id])  # DDT
+        # logger.debug "signed_in_user: user = #{@user}" # DDT
+        store_location
+        logger.debug "signed_in_user" # DDT
+        redirect_to signin_url, notice: "Please sign in." unless signed_in?
+      end
     end
 
     # NOTE:  we are getting errors from the test for redirection to the root_path, but in practice it seems to be working

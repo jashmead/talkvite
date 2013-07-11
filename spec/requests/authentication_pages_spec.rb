@@ -51,6 +51,25 @@ describe "Authentication" do
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
 
+      # protected page appears to be just 'edit page'
+      describe "when attempting to visit a protected page" do
+
+        before do
+          visit edit_user_path(user)
+          fill_in "Email",    with: user.email
+          fill_in "Password", with: user.password
+          click_button "Sign in"
+        end
+
+        describe "after signing in" do
+          it "should render the desired protected page" do
+            # we can't use logger.debug here for some reason
+            expect(page).to have_title('Edit user')
+          end
+        end
+
+      end
+
       describe "in the Users controller" do
 
         describe "visiting the edit page" do
@@ -69,7 +88,7 @@ describe "Authentication" do
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
-      before { sign_in user, no_capybara: true }
+      before { sign_in user }
 
       describe "visiting Users#edit page" do
         before { visit edit_user_path(wrong_user) }
@@ -78,14 +97,9 @@ describe "Authentication" do
 
       describe "submitting a PATCH request to the Users#update action" do
         before { patch user_path(wrong_user) }
-        # NOTE:  we should be redirecting to the root path here.
-        #   -- that appears to be what is actually happening, but we aren't seeing that here
-        #     -- test code thinks we redirected to /signin
-        #   -- further, redirections are going to "example.com", not to "talkvite.com"
-        # WORKAROUND:  checking for signin path for now
-        specify { expect(response).to redirect_to(signin_path) }
-        # TUTORIAL code:
+        # for some reason, going to signin path not root_path; code seems fine, source of error unclear
         # specify { expect(response).to redirect_to(root_path) }
+        specify { expect(response).to redirect_to(signin_path) }    # DDT -- not clear why "current_user" not called
       end
     end
 
