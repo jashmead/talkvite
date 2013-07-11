@@ -52,9 +52,8 @@ describe "Authentication" do
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
 
-      # protected page appears to be just 'edit page'
+      # protected page is mostly 'edit' page
       describe "when attempting to visit a protected page" do
-
         before do
           visit edit_user_path(user)
           fill_in "Email",    with: user.email
@@ -63,13 +62,27 @@ describe "Authentication" do
         end
 
         describe "after signing in" do
+
           it "should render the desired protected page" do
-            # we can't use logger.debug here for some reason
             expect(page).to have_title('Edit user')
           end
-        end
 
+          describe "when signing in again" do
+            before do
+              delete signout_path
+              visit signin_path
+              fill_in "Email",    with: user.email
+              fill_in "Password", with: user.password
+              click_button "Sign in"
+            end
+
+            it "should render the default (profile) page" do
+              expect(page).to have_title(user.name)
+            end
+          end
+        end
       end
+
 
       describe "in the Users controller" do
 
