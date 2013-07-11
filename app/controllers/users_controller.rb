@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
     def signed_in_user
       @user = User.find(params[:id])  # DDT
-      logger.debug "signed_in_user: user = #{@user}"  # DDT
+      logger.debug "signed_in_user: user = #{@user}" # DDT
       redirect_to signin_url, notice: "Please sign in." unless signed_in?
     end
 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     #   -- can compare to talkvite2 copy, if we don't find it before the end
     def correct_user
       @user = User.find(params[:id])
-      logger.debug "correct_user: user = #{@user}"  # DDT
+      logger.debug "correct_user: user = #{@user}" # DDT
       redirect_to(root_path) unless current_user?(@user)
     end
 

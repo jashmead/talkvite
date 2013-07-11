@@ -63,6 +63,7 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
       end
+
     end
 
     describe "as wrong user" do
@@ -76,7 +77,7 @@ describe "Authentication" do
       end
 
       describe "submitting a PATCH request to the Users#update action" do
-        before { patch edit_user_path(wrong_user) }
+        before { patch user_path(wrong_user) }
         # NOTE:  we should be redirecting to the root path here.
         #   -- that appears to be what is actually happening, but we aren't seeing that here
         #     -- test code thinks we redirected to /signin
