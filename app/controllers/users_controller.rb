@@ -2,8 +2,9 @@
 # 1. test for not being able to edit a different user reroutes to signin, not root
 # 2. we can see the 'show' page for a different user:  if logged in as '1', can see /users/2 -- is this a bug?
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
 
   def index
     @users = User.paginate(page: params[:page])
@@ -44,6 +45,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    redirect_to users_url
+  end
+
   private
 
     def user_params
@@ -69,6 +76,11 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       logger.debug "correct_user: user = #{@user}" # DDT
       redirect_to(root_path) unless current_user?(@user)
+    end
+
+    def admin_user
+      # sign out user as well? if signed in?
+      redirect_to(root_path) unless current_user.admin?
     end
 
 end
